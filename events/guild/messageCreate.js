@@ -25,8 +25,9 @@ module.exports = async (client, discord, msg) => {
     const com = arg.shift().toLocaleLowerCase();
     var rpt = 0;
 
-    if(com) com.execute(client, msg, arg, discord);
-    if(!com) return msg.channel.send("Este no es un comando!!");
+    const command = client.commands.get(com);
+    if(command) command.execute(client, msg, arg, discord);
+    if(!command) return msg.channel.send("Este no es un comando!!");
 
     /*if (com == "help") {
         return msg.reply({ embeds: [me] });
