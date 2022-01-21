@@ -29,7 +29,7 @@ module.exports = async (client, discord, msg) => {
     if(command) command.execute(client, msg, arg, discord);
     if(!command) return msg.channel.send("Este no es un comando!!");
 
-    /*if (com == "help") {
+    if (com == "help") {
         return msg.reply({ embeds: [me] });
     }
 
@@ -60,7 +60,7 @@ module.exports = async (client, discord, msg) => {
         ;
 
     return msg.reply({ embeds: [me2] });
-    */
+    
 
 }
 else {
