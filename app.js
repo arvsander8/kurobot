@@ -7,6 +7,26 @@ const client = new discord.Client({
 
 //! CODIGO
 
+/**MONGOOSE */
+
+const mongoose = require("mongoose");
+const mg = process.env.MONGOCONNECTION;
+
+
+mongoose.connect(mg,{
+  useNewUrlParser: true,
+  useUnifiedTopology: true
+}).then(() => {
+  console.log("------------------------------LOGS DEL BOT----------------------------------");
+  console.log("Conectado a Mongo!!");
+}).catch((e) =>{
+  console.log(e);
+});
+
+/** */
+
+
+
 client.commands = new discord.Collection();
 client.events = new discord.Collection();
 

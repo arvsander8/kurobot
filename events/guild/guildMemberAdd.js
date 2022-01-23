@@ -1,8 +1,31 @@
 
-const {createCanvas,loadImage}  = require("canvas")
-const { join } =require("path")
+const { createCanvas, loadImage } = require("canvas")
+const { join } = require("path")
+
+/** Modelos */
+
+const userModel = require("../../models/useSchema");
+
+/** */
+
 
 module.exports = async (client, discord, member) => {
+
+
+  /**Registrar USuario */
+  try {
+    let user = await userModel.create({
+      userID: msg.author.id,
+      userName: msg.author.userName,
+      serverID: msg.guild.id
+    });
+    user.save();
+  } catch (error) {
+    console.log(error);
+  }
+
+  /** */
+
   const channel = member.guild.channels.cache.find(
     (channel) => channel.id === "885587804002848808"
   );
@@ -74,25 +97,25 @@ module.exports = async (client, discord, member) => {
 
   channel.send({ embeds: [me], files: [imagen] });
 
-  
+
   //const rol = guild.roles.cache.find(role => role.name == "prueba")
 
 };
 
- /* guild.roles.cache.forEach((role) => {
-    console.log("Name: " + role.name+ "ID: " + role.id);
-  });*/
+/* guild.roles.cache.forEach((role) => {
+   console.log("Name: " + role.name+ "ID: " + role.id);
+ });*/
 
 
 
 
 
 
-  /*const me = new discord.MessageEmbed()
-    .setColor("RED")
-    .setTitle("Bienvendia")
-    .setAuthor(
-      member.user.username /*Autor*/
+/*const me = new discord.MessageEmbed()
+  .setColor("RED")
+  .setTitle("Bienvendia")
+  .setAuthor(
+    member.user.username /*Autor*/
   //   member.user.displayAvatarURL() /* Icono*/
   //   )
   // .setDescription(`Se bienvendio al servidor ${member.guild.name}`)
